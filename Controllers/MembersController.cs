@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Baraga.Models.BG;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Baraga.Controllers
 {
@@ -18,12 +19,14 @@ namespace Baraga.Controllers
             _context = context;
         }
 
+        [Authorize]
         // GET: Members
         public async Task<IActionResult> Index()
         {
             return View(await _context.Members.ToListAsync());
         }
 
+        [Authorize]
         // GET: Members/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -42,6 +45,7 @@ namespace Baraga.Controllers
             return View(member);
         }
 
+        [Authorize]
         // GET: Members/Create
         public IActionResult Create()
         {
@@ -64,6 +68,7 @@ namespace Baraga.Controllers
             return View(member);
         }
 
+            [Authorize]
         // GET: Members/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -115,6 +120,7 @@ namespace Baraga.Controllers
             return View(member);
         }
 
+        [Authorize]
         // GET: Members/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
